@@ -3,9 +3,8 @@ import Link from 'next/link'
 import Head from 'next/head'
 
 const links = [
-  { href: 'https://zeit.co/now', label: 'ZEIT' },
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' }
-].map(link => ({
+  { href: '/about', label: 'about' }
+  ].map(link => ({
   ...link,
   key: `nav-link-${link.href}-${link.label}`
 }))
