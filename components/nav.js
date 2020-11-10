@@ -3,7 +3,9 @@ import Link from 'next/link'
 import Head from 'next/head'
 
 const links = [
-  { href: '/about', label: 'about' }
+  { href: '/about', label: 'about' },
+  { href: '/contact', label: 'contact' },
+
   ].map(link => ({
   ...link,
   key: `nav-link-${link.href}-${link.label}`
