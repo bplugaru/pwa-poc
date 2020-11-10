@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import Nav from '../components/nav'
 import styles from '../styles/Home.module.css'
 
