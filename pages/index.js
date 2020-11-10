@@ -1,9 +1,8 @@
-import Head from 'next/head'
-import Nav from '../components/nav'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Nav from "../components/nav";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
-
   return (
     <div className={styles.container}>
       <Head>
@@ -11,15 +10,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      <Nav></Nav>
+        <Nav></Nav>
 
-        <h1 className={styles.title}>
-         Home
-        </h1>
-        
+        <h1 className={styles.title}>Home</h1>
       </main>
-
-      
     </div>
-  )
+  );
 }
