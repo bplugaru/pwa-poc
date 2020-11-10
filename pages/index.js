@@ -10,8 +10,9 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <Nav></Nav>
       <main className={styles.main}>
+      <Nav></Nav>
+
         <h1 className={styles.title}>
          Home
         </h1>
