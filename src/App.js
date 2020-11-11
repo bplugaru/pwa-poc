@@ -83,7 +83,7 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/user">user</Link>
+              <Link to="/user">our user</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
