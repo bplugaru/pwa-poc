@@ -6,6 +6,8 @@ import { Button } from "@material-ui/core";
 import * as serviceWorker from "./serviceWorkerRegistration";
 
 function App() {
+  const [counter, setCounter] = React.useState(6000);
+
   const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = useState({
     newVersionAvailable: false,
@@ -21,7 +23,7 @@ function App() {
   };
   const updateServiceWorker = () => {
     const { waitingWorker } = state;
-    console.log(waitingWorker)
+    console.log(waitingWorker);
     waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
     setState({ newVersionAvailable: false });
     window.location.reload();
@@ -38,7 +40,7 @@ function App() {
 
   useEffect(() => {
     const { newVersionAvailable } = state;
-    console.log('newVersionAvailable', newVersionAvailable)
+    console.log("newVersionAvailable", newVersionAvailable);
     if (newVersionAvailable) {
       enqueueSnackbar("A new version was released", {
         persist: true,
@@ -50,24 +52,27 @@ function App() {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      console.log('production', serviceWorker)
+      console.log("production", serviceWorker);
       serviceWorker.register({ onUpdate: onServiceWorkerUpdate });
     }
   }, []);
+
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    if (counter % 60) {
+      console.log("trigger");
+      serviceWorker.register();
+    }
+    return () => clearInterval(timer);
+  }, [counter]);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React? demo
-        </a>
+        <div>Countdown: {counter}</div>
       </header>
     </div>
   );
