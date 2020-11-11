@@ -23,7 +23,7 @@ function App() {
     const { waitingWorker } = state;
     waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
     this.setState({ newVersionAvailable: false });
-    window.location.reload(true);
+    window.location.reload();
   };
   const refreshAction = () => (
     <Button
