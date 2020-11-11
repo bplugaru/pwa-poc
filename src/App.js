@@ -36,12 +36,15 @@ function App() {
   );
 
   useEffect(() => {
-    enqueueSnackbar("A new version was released", {
-      persist: true,
-      variant: "success",
-      action: refreshAction(),
-    });
-  }, []);
+    const { newVersionAvailable } = this.state;
+    if (newVersionAvailable) {
+      enqueueSnackbar("A new version was released", {
+        persist: true,
+        variant: "success",
+        action: refreshAction(),
+      });
+    }
+  }, [state]);
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
