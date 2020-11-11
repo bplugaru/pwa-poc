@@ -63,7 +63,7 @@ function App() {
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter % 60) {
       console.log("trigger from counter");
-      serviceWorker.register();
+     // serviceWorker.register();
     }
     return () => clearInterval(timer);
   }, [counter]);
