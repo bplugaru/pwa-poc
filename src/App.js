@@ -50,7 +50,7 @@ function App() {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      console.log('production')
+      console.log('production', serviceWorker)
       serviceWorker.register({ onUpdate: onServiceWorkerUpdate });
     }
   }, []);
