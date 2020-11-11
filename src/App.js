@@ -65,7 +65,7 @@ function App() {
   useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    if (counter % 60 === 0) {
+    if (counter % 10 === 0) {
       console.log("trigger from counter", req);
       // serviceWorker.register();
       req && req.update()
