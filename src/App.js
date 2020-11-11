@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   const [counter, setCounter] = React.useState(6000);
+  const [req, setReq] = React.useState({});
 
   const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = useState({
@@ -54,7 +55,10 @@ function App() {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       console.log("production", serviceWorker);
-      serviceWorker.register({ onUpdate: onServiceWorkerUpdate });
+      serviceWorker.register({ onUpdate: onServiceWorkerUpdate }).then((req) => {
+        console.log(req);
+        setReq(req)
+      });
     }
   }, []);
 
@@ -62,8 +66,9 @@ function App() {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter % 60 === 0) {
-      console.log("trigger from counter");
+      console.log("trigger from counter", req);
       // serviceWorker.register();
+      req && req.update()
     }
     return () => clearInterval(timer);
   }, [counter]);
