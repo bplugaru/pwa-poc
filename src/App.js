@@ -4,6 +4,7 @@ import "./App.css";
 import { useSnackbar } from "notistack";
 import { Button } from "@material-ui/core";
 import * as serviceWorker from "./serviceWorkerRegistration";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   const [counter, setCounter] = React.useState(6000);
@@ -68,13 +69,34 @@ function App() {
   }, [counter]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <Router>
+      <div className="App">
+   
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/about">
+            <h1> about</h1>
+          </Route>
 
-        <div>Countdown: {counter}</div>
-      </header>
-    </div>
+          <Route path="/">
+            <h1> home</h1>
+          </Route>
+        </Switch>
+      </div>
+      <header className="App-header">
+
+          <div>Countdown: {counter}</div>
+        </header>
+    </Router>
   );
 }
 
