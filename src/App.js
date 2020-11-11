@@ -61,9 +61,9 @@ function App() {
   useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    if (counter % 60) {
+    if (counter % 60 === 0) {
       console.log("trigger from counter");
-     // serviceWorker.register();
+      // serviceWorker.register();
     }
     return () => clearInterval(timer);
   }, [counter]);
@@ -71,7 +71,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-   
         <nav>
           <ul>
             <li>
@@ -93,9 +92,8 @@ function App() {
         </Switch>
       </div>
       <header className="App-header">
-
-          <div>Countdown: {counter}</div>
-        </header>
+        <div>Countdown: {counter}</div>
+      </header>
     </Router>
   );
 }
