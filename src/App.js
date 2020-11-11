@@ -82,6 +82,9 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
+              <Link to="/user">user</Link>
+            </li>
+            <li>
               <Link to="/about">About</Link>
             </li>
           </ul>
@@ -90,7 +93,9 @@ function App() {
           <Route path="/about">
             <h1> about</h1>
           </Route>
-
+          <Route path="/user">
+            <h1> user</h1>
+          </Route>
           <Route path="/">
             <h1> home</h1>
           </Route>
