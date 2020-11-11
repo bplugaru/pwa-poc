@@ -6,14 +6,14 @@ import { Button } from "@material-ui/core";
 import * as serviceWorker from "./serviceWorkerRegistration";
 
 function App() {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = useState({
     newVersionAvailable: false,
     waitingWorker: {},
   });
 
   const onServiceWorkerUpdate = (registration) => {
-    console.log("update");
+    console.log("update", registration);
     setState({
       newVersionAvailable: true,
       waitingWorker: registration && registration.waiting,
@@ -21,9 +21,10 @@ function App() {
   };
   const updateServiceWorker = () => {
     const { waitingWorker } = state;
-    waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
-    this.setState({ newVersionAvailable: false });
-    window.location.reload();
+    console.log(waitingWorker)
+    // waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
+    // this.setState({ newVersionAvailable: false });
+    // window.location.reload();
   };
   const refreshAction = () => (
     <Button
@@ -37,6 +38,7 @@ function App() {
 
   useEffect(() => {
     const { newVersionAvailable } = this.state;
+    console.log('newVersionAvailable', newVersionAvailable)
     if (newVersionAvailable) {
       enqueueSnackbar("A new version was released", {
         persist: true,
@@ -48,6 +50,7 @@ function App() {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
+      console.log('production')
       serviceWorker.register({ onUpdate: onServiceWorkerUpdate });
     }
   }, []);
