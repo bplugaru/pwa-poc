@@ -22,9 +22,9 @@ function App() {
   const updateServiceWorker = () => {
     const { waitingWorker } = state;
     console.log(waitingWorker)
-    // waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
-    // this.setState({ newVersionAvailable: false });
-    // window.location.reload();
+    waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
+    this.setState({ newVersionAvailable: false });
+    window.location.reload();
   };
   const refreshAction = () => (
     <Button
@@ -54,7 +54,7 @@ function App() {
       serviceWorker.register({ onUpdate: onServiceWorkerUpdate });
     }
   }, []);
-  
+
   return (
     <div className="App">
       <header className="App-header">
