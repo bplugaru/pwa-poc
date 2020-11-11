@@ -68,7 +68,7 @@ function App() {
     if (counter % 10 === 0) {
       console.log("trigger from counter", req);
       // serviceWorker.register();
-      req && req.update()
+     // req && req.update()
     }
     return () => clearInterval(timer);
   }, [counter]);
