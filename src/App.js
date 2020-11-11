@@ -37,7 +37,7 @@ function App() {
   );
 
   useEffect(() => {
-    const { newVersionAvailable } = this.state;
+    const { newVersionAvailable } = state;
     console.log('newVersionAvailable', newVersionAvailable)
     if (newVersionAvailable) {
       enqueueSnackbar("A new version was released", {
