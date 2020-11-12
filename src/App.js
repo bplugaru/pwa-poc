@@ -64,7 +64,7 @@ function App() {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter % 10 === 0) {
-      console.log("trigger from counter", req);
+      console.log("trigger from counter", state.worker);
       // serviceWorker.register();
      // req && req.update()
     }
