@@ -37,7 +37,7 @@ function App() {
     console.log(waitingWorker);
     waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
     setState({ newVersionAvailable: false });
-    window.location.reload();
+    window.location.reload(true);
   };
   const refreshAction = () => (
     <Button
