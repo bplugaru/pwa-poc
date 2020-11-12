@@ -29,7 +29,7 @@ export function register(config) {
         // Our service worker won't work if PUBLIC_URL is on a different origin
         // from what our page is served on. This might happen if a CDN is used to
         // serve assets; see https://github.com/facebook/create-react-app/issues/2374
-        resolveFunc(null)
+        resolveFunc(null);
         return;
       }
 
@@ -51,7 +51,8 @@ export function register(config) {
           resolveFunc(null);
         } else {
           // Is not localhost. Just register service worker
-          registerValidSW(swUrl, config).then(reg => resolveFunc(reg));
+          console.log("Just register service worker");
+          registerValidSW(swUrl, config).then((reg) => resolveFunc(reg));
         }
       });
     }
@@ -99,6 +100,7 @@ function registerValidSW(swUrl, config) {
             }
           };
         };
+        console.log("registerValidSW", registration);
         resolveFunc(registration);
       })
       .catch((error) => {
