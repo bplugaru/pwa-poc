@@ -16,6 +16,11 @@ function App() {
     worker: {}
   });
 
+  const onSaveWorkerRef = (registration) => {
+    console.log("onSaveWorkerRef", registration);
+
+  }
+
   const onServiceWorkerUpdate = (registration) => {
     console.log("update1", registration);
     setState({
@@ -56,7 +61,7 @@ function App() {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       console.log("production", serviceWorker);
-      serviceWorker.register({ onUpdate: onServiceWorkerUpdate })
+      serviceWorker.register({ onUpdate: onServiceWorkerUpdate, ref: onSaveWorkerRef })
     }
   }, [serviceWorker]);
 
