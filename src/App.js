@@ -13,7 +13,7 @@ function App() {
   const [state, setState] = useState({
     newVersionAvailable: false,
     waitingWorker: {},
-    worker: {},
+    worker: null,
   });
 
   const onSaveWorkerRef = (registration) => {
@@ -77,7 +77,10 @@ function App() {
     if (counter % 10 === 0) {
       console.log("trigger from counter", state.worker);
       // serviceWorker.register();
-      // req && req.update()
+      if (state.worker && state.worker.update) {
+        state.worker.update();
+      }
+      // state.worker && req.update()
     }
     return () => clearInterval(timer);
   }, [counter]);
