@@ -8,12 +8,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   const [counter, setCounter] = React.useState(6000);
-  const [req, setReq] = React.useState({});
 
   const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = useState({
     newVersionAvailable: false,
     waitingWorker: {},
+    worker: {}
   });
 
   const onServiceWorkerUpdate = (registration) => {
@@ -21,6 +21,7 @@ function App() {
     setState({
       newVersionAvailable: true,
       waitingWorker: registration && registration.waiting,
+      worker: registration
     });
   };
   const updateServiceWorker = () => {
