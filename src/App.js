@@ -17,7 +17,7 @@ function App() {
   });
 
   const onServiceWorkerUpdate = (registration) => {
-    console.log("update", registration);
+    console.log("update1", registration);
     setState({
       newVersionAvailable: true,
       waitingWorker: registration && registration.waiting,
