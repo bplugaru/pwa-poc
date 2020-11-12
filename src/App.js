@@ -61,7 +61,7 @@ function App() {
         setReq(req)
       });
     }
-  }, []);
+  }, [serviceWorker]);
 
   useEffect(() => {
     const timer =
