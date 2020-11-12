@@ -94,10 +94,10 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/user">our user</Link>
+              <Link to="/user">User managment</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about">About us</Link>
             </li>
           </ul>
         </nav>
