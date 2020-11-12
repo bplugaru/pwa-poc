@@ -106,7 +106,7 @@ function App() {
             <h1> about</h1>
           </Route>
           <Route path="/user">
-            <h1> user</h1>
+            <h1> user  managment</h1>
           </Route>
           <Route path="/">
             <h1> home</h1>
