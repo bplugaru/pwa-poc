@@ -56,10 +56,10 @@ function App() {
     if (process.env.NODE_ENV === "production") {
       console.log("production", serviceWorker);
       serviceWorker.register({ onUpdate: onServiceWorkerUpdate })
-      // .then((req) => {
-      //   console.log(req);
-      //   setReq(req)
-      // });
+      .then((req) => {
+        console.log(req);
+        setReq(req)
+      });
     }
   }, []);
 
