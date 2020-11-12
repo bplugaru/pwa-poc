@@ -103,10 +103,10 @@ function App() {
         </nav>
         <Switch>
           <Route path="/about">
-            <h1> about</h1>
+            <h1> about us</h1>
           </Route>
           <Route path="/user">
-            <h1> user  managment</h1>
+            <h1> user managment</h1>
           </Route>
           <Route path="/">
             <h1> home</h1>
