@@ -17,7 +17,6 @@ function App() {
   });
 
   const onSaveWorkerRef = (registration) => {
-    console.log("onSaveWorkerRef", registration);
     setState((prevState) => ({
       ...prevState,
       worker: registration,
@@ -25,7 +24,6 @@ function App() {
   };
 
   const onServiceWorkerUpdate = (registration) => {
-    console.log("update1", registration);
     setState((prevState) => ({
       ...prevState,
       newVersionAvailable: true,
@@ -34,7 +32,6 @@ function App() {
   };
   const updateServiceWorker = () => {
     const { waitingWorker } = state;
-    console.log(waitingWorker);
     waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
     setState({ newVersionAvailable: false });
     window.location.reload(true);
@@ -51,7 +48,6 @@ function App() {
 
   useEffect(() => {
     const { newVersionAvailable } = state;
-    console.log("newVersionAvailable", newVersionAvailable);
     if (newVersionAvailable) {
       enqueueSnackbar("A new version was released", {
         persist: true,
@@ -63,7 +59,6 @@ function App() {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      console.log("production", serviceWorker);
       serviceWorker.register({
         onUpdate: onServiceWorkerUpdate,
         ref: onSaveWorkerRef,
@@ -75,12 +70,9 @@ function App() {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter % 10 === 0) {
-      console.log("trigger from counter", state.worker);
-      // serviceWorker.register();
       if (state.worker && state.worker.update) {
         state.worker.update();
       }
-      // state.worker && req.update()
     }
     return () => clearInterval(timer);
   }, [counter]);
