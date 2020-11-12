@@ -13,21 +13,24 @@ function App() {
   const [state, setState] = useState({
     newVersionAvailable: false,
     waitingWorker: {},
-    worker: {}
+    worker: {},
   });
 
   const onSaveWorkerRef = (registration) => {
     console.log("onSaveWorkerRef", registration);
-
-  }
+    setState((prevState) => ({
+      ...prevState,
+      worker: registration,
+    }));
+  };
 
   const onServiceWorkerUpdate = (registration) => {
     console.log("update1", registration);
-    setState({
+    setState((prevState) => ({
+      ...prevState,
       newVersionAvailable: true,
       waitingWorker: registration && registration.waiting,
-      worker: registration
-    });
+    }));
   };
   const updateServiceWorker = () => {
     const { waitingWorker } = state;
@@ -61,7 +64,10 @@ function App() {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       console.log("production", serviceWorker);
-      serviceWorker.register({ onUpdate: onServiceWorkerUpdate, ref: onSaveWorkerRef })
+      serviceWorker.register({
+        onUpdate: onServiceWorkerUpdate,
+        ref: onSaveWorkerRef,
+      });
     }
   }, [serviceWorker]);
 
@@ -71,7 +77,7 @@ function App() {
     if (counter % 10 === 0) {
       console.log("trigger from counter", state.worker);
       // serviceWorker.register();
-     // req && req.update()
+      // req && req.update()
     }
     return () => clearInterval(timer);
   }, [counter]);

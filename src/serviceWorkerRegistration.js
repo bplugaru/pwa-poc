@@ -58,19 +58,18 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
-      console.log('registerValidSW')
-      if(config && config.ref) {
+      console.log("registerValidSW");
+      if (config && config.ref) {
         config.ref(registration);
-
       }
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
-        console.log('registerValidSW', installingWorker)
+        console.log("registerValidSW", installingWorker);
         if (installingWorker == null) {
           return;
         }
         installingWorker.onstatechange = () => {
-          console.log('onstatechange', installingWorker)
+          console.log("onstatechange", installingWorker);
 
           if (installingWorker.state === "installed") {
             if (navigator.serviceWorker.controller) {
