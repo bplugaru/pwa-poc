@@ -106,7 +106,7 @@ function App() {
         </Switch>
       </div>
       <header className="App-header">
-        <div>Countdown: {counter}</div>
+        <div>count: {counter}</div>
       </header>
     </Router>
   );
