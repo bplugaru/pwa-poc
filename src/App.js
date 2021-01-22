@@ -98,10 +98,10 @@ function App() {
             <h1> about us</h1>
           </Route>
           <Route path="/user">
-            <h1> user managment</h1>
+            <h1> user management</h1>
           </Route>
           <Route path="/">
-            <h1> home sweet home v2</h1>
+            <h1> home sweet home v3</h1>
           </Route>
         </Switch>
       </div>
