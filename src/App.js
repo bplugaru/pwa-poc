@@ -61,6 +61,7 @@ function App() {
   }, [state]);
 
   useEffect(() => {
+    console.log(serviceWorker, process.env)
     if (process.env.NODE_ENV === "production") {
       serviceWorker.register({
         onUpdate: onServiceWorkerUpdate,
