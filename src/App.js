@@ -17,6 +17,7 @@ function App() {
   });
 
   const onSaveWorkerRef = (registration) => {
+    console.log('onSaveWorkerRef', registration)
     setState((prevState) => ({
       ...prevState,
       worker: registration,
@@ -32,6 +33,8 @@ function App() {
   };
   const updateServiceWorker = () => {
     const { waitingWorker } = state;
+    console.log('updateServiceWorker', state)
+
     waitingWorker && waitingWorker.postMessage({ type: "SKIP_WAITING" });
     setState({ newVersionAvailable: false });
     window.location.reload(true);
@@ -70,6 +73,7 @@ function App() {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter % 10 === 0) {
+      console.log('state.worker', state.worker)
       if (state.worker && state.worker.update) {
         state.worker.update();
       }
