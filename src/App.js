@@ -86,7 +86,7 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/user">User managment</Link>
+              <Link to="/user">User management</Link>
             </li>
             <li>
               <Link to="/about">About us</Link>
@@ -101,7 +101,7 @@ function App() {
             <h1> user managment</h1>
           </Route>
           <Route path="/">
-            <h1> home sweet home</h1>
+            <h1> home sweet home v2</h1>
           </Route>
         </Switch>
       </div>
